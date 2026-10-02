@@ -1,0 +1,25 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ffcc00;
+    --dark-color: #111;
+    --bg-color: antiquewhite;
+
+}
+
+
+body {
+font-family: 'Lora:ital',sans-serif;
+line-height: 1.6;
+background-color: var(--bg-color);
+}
+
+
+h1, h2, h3,h4 {
+    font-family: 'Lora', serif;
+    font-weight: 700; 
+}

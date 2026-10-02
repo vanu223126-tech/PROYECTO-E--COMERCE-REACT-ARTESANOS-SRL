@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Set de 6 Budas",
+    "categoria": "Yeso",
+    "precio": 5000,
+    "stock": 10,
+    "imagen": "/images/set_de_6_budas.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Busto decorativo",
+    "categoria": "Yeso",
+    "precio": 7000,
+    "stock": 10,
+    "imagen": "/images/Busto_decorativo.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Figura floral orgánica",
+    "categoria": "Yeso",
+    "precio": 4500,
+    "stock": 10,
+    "imagen": "/images/Figura_floral_orgánica.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Estante live edge",
+    "categoria": "Madera",
+    "precio": 35000,
+    "stock": 10,
+    "imagen": "/images/Estante_live_edge.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Bowl decorativo de nogal",
+    "categoria": "Madera",
+    "precio": 15000,
+    "stock": 10,
+    "imagen": "/images/Bowl_decorativo_nogal.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "Porta objetos geométrico",
+    "categoria": "Madera",
+    "precio": 8000,
+    "stock": 10,
+    "imagen": "/images/Porta_objetos_geométrico.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Mesa river table",
+    "categoria": "Resina",
+    "precio": 55000,
+    "stock": 5,
+    "imagen": "/images/Mesa_river_table.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Vela con flores secas",
+    "categoria": "Resina",
+    "precio": 7000,
+    "stock": 15,
+    "imagen": "/images/Vela_con_flores_secas.jpg"
+  },
+  {
+    "id": 9,
+    "nombre": "Posavasos efecto mármol",
+    "categoria": "Resina",
+    "precio": 6000,
+    "stock": 20,
+    "imagen": "/images/Posavasos_efecto_mármol.jpg"
+  }
+]

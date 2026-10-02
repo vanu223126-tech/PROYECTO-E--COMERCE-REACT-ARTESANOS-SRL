@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "nombre": "Vanesa Veron",
+    "rol": "Desarrolladora Frontend",
+    "foto": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200"
+  },
+  {
+    "id": 2,
+    "nombre": "María Laura",
+    "rol": "Diseño de Interiores",
+    "foto": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=200"
+  },
+  {
+    "id": 3,
+    "nombre": "Carlos Gómez",
+    "rol": "Gestión de Stock",
+    "foto": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+  }
+]

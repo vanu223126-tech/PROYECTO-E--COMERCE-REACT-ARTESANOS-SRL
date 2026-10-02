@@ -1,0 +1,24 @@
+.equipoGrid {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tarjetaEquipo {
+  background-color: #222;
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px;
+  text-align: center;
+  width: 140px;
+}
+
+.foto {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
