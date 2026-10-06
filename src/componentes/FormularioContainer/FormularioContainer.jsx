@@ -30,7 +30,7 @@ export function FormularioContainer() {
       return;
     }
 
-    const apiKey = 'TU_API_KEY_AQUI'; // Reemplazar por tu Key de ImgBB
+    const apiKey = '2b543fa8fdd060931ce60a40a55da100'; 
     const formData = new FormData();
     formData.append('image', imagenFile);
 
@@ -50,13 +50,13 @@ export function FormularioContainer() {
           nombre: datosForm.nombre,
           precio: Number(datosForm.precio),
           stock: Number(datosForm.stock),
-          imagen: datosImgbb.data.url // Mantenemos el nombre 'imagen' igual que en productos.json
+          imagen: datosImgbb.data.url 
         };
 
         console.log('Enviando los siguientes datos COMPLETOS a la API:', productoCompleto);
         alert('¡Producto creado con éxito!');
 
-        // Reset del formulario
+        
         setDatosForm({ nombre: '', precio: '', stock: '' });
         setImagenFile(null);
       } else {
