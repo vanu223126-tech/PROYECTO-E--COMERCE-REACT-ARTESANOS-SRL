@@ -1,13 +1,19 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./TarjetaProducto.module.css";
 
-function TarjetaProducto({ imagen, nombre, precio, stock }) {
+function TarjetaProducto({ id, imagen, nombre, precio, stock }) {
   return (
     <article className={styles.tarjeta}>
-      <img className={styles.imagen} src={imagen} alt={nombre} />
+      {/* Redirige al detalle del producto al hacer clic en la imagen o título */}
+      <Link to={`/producto/${id}`} className={styles.enlaceDetalle}>
+        <img className={styles.imagen} src={imagen} alt={nombre} />
+      </Link>
 
       <div className={styles.contenido}>
-        <h3 className={styles.nombre}>{nombre}</h3>
+        <Link to={`/producto/${id}`} className={styles.enlaceDetalle}>
+          <h3 className={styles.nombre}>{nombre}</h3>
+        </Link>
 
         <p className={styles.precio}>
           ${precio ? precio.toLocaleString("es-AR") : "0"}
@@ -15,7 +21,12 @@ function TarjetaProducto({ imagen, nombre, precio, stock }) {
 
         <p className={styles.Stock}>Stock: {stock}</p>
 
-        <button className={styles.button}>Agregar al carrito</button>
+        <div className={styles.acciones}>
+          <Link to={`/producto/${id}`} className={styles.botonDetalle}>
+            Ver detalle
+          </Link>
+          <button className={styles.button}>Agregar al carrito</button>
+        </div>
       </div>
     </article>
   );

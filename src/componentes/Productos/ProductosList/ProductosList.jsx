@@ -7,12 +7,13 @@ function ProductosList({ productos }) {
     <div className={styles.contenedor}>
       {productos.map((producto) => (
         <TarjetaProducto
-          key={producto.id}
-          imagen={producto.imagen}
-          nombre={producto.nombre}
-          precio={producto.precio}
-          stock={producto.stock}
-        />
+  key={producto.id}
+  id={producto.id}
+  imagen={producto.imagen}
+  nombre={producto.nombre}
+  precio={producto.precio}
+  stock={producto.stock}
+/>
       ))}
     </div>
   );

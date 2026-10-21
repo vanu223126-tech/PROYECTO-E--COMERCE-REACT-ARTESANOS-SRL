@@ -1,11 +1,14 @@
-[
+
+  [
   {
     "id": 1,
     "nombre": "Set de 6 Budas",
     "categoria": "Yeso",
     "precio": 5000,
     "stock": 10,
-    "imagen": "/images/set_de_6_budas.jpg"
+    "imagen": "/images/set_de_6_budas.jpg",
+    "descripcion": "Set de 6 budas de yeso, ideal para decorar tu espacio.",
+    "destacado": true
   },
   {
     "id": 2,
@@ -13,7 +16,8 @@
     "categoria": "Yeso",
     "precio": 7000,
     "stock": 10,
-    "imagen": "/images/Busto_decorativo.jpg"
+    "imagen": "/images/busto_decorativo.jpg",
+    "descripcion": "Busto decorativo de yeso, perfecto para añadir un toque artístico a tu hogar."
   },
   {
     "id": 3,
@@ -21,7 +25,8 @@
     "categoria": "Yeso",
     "precio": 4500,
     "stock": 10,
-    "imagen": "/images/Figura_floral_orgánica.jpg"
+    "imagen": "/images/figura_floral_organica.jpg",
+    "descripcion": "Figura floral orgánica de yeso, ideal para decorar tu espacio."
   },
   {
     "id": 4,
@@ -29,7 +34,9 @@
     "categoria": "Madera",
     "precio": 35000,
     "stock": 10,
-    "imagen": "/images/Estante_live_edge.jpg"
+    "imagen": "/images/estante_live_edge.jpg",
+    "descripcion": "Estante con borde natural, perfecto para almacenar tus libros y objetos decorativos.",
+    "destacado": true
   },
   {
     "id": 5,
@@ -37,7 +44,8 @@
     "categoria": "Madera",
     "precio": 15000,
     "stock": 10,
-    "imagen": "/images/Bowl_decorativo_nogal.jpg"
+    "imagen": "/images/bowl_decorativo_nogal.jpg",
+    "descripcion": "Bowl decorativo de nogal, ideal para añadir un toque natural a tu espacio."
   },
   {
     "id": 6,
@@ -45,7 +53,8 @@
     "categoria": "Madera",
     "precio": 8000,
     "stock": 10,
-    "imagen": "/images/Porta_objetos_geométrico.jpg"
+    "imagen": "/images/porta_objetos_geometrico.jpg",
+    "descripcion": "Porta objetos con diseño geométrico, perfecto para organizar tu espacio."
   },
   {
     "id": 7,
@@ -53,22 +62,27 @@
     "categoria": "Resina",
     "precio": 55000,
     "stock": 5,
-    "imagen": "/images/Mesa_river_table.jpg"
+    "imagen": "/images/mesa_river_table.jpg",
+    "descripcion": "Mesa river table de resina, perfecta para tu sala de estar.",
+    "destacado": true
   },
   {
-    "id": 8,
-    "nombre": "Vela con flores secas",
-    "categoria": "Resina",
-    "precio": 7000,
-    "stock": 15,
-    "imagen": "/images/Vela_con_flores_secas.jpg"
-  },
+  "id": 8,
+  "nombre": "Vela con flores secas",
+  "categoria": "Resina",
+  "precio": 7000,
+  "stock": 15,
+  "imagen": "/images/vela_con_flores_secas.jpg",
+  "descripcion": "Vela con flores secas de resina, ideal para crear un ambiente acogedor."
+},
+
   {
     "id": 9,
     "nombre": "Posavasos efecto mármol",
     "categoria": "Resina",
     "precio": 6000,
     "stock": 20,
-    "imagen": "/images/Posavasos_efecto_mármol.jpg"
+    "imagen": "/images/posavasos_efecto_marmol.jpg",
+    "descripcion": "Posavasos con efecto mármol, perfecto para añadir un toque de lujo a tu mesa."
   }
 ]
