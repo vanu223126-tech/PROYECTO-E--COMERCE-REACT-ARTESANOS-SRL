@@ -4,6 +4,7 @@ import Inicio from './componentes/Inicio/Inicio';
 import ProductosContainer from './componentes/Productos/ProductosContainer/ProductosContainer';
 import { FormularioContainer } from './componentes/FormularioContainer/FormularioContainer';
 import ProductosDetalle from './componentes/Productos/ProductosDetalle/ProductosDetalle';
+import Cart from './componentes/Cart/Cart';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/destacados" element={<ProductosContainer Mensaje="Productos Destacados" soloDestacados />} />
         <Route path="/alta" element={<FormularioContainer />} />
         <Route path="/producto/:id" element={<ProductosDetalle />} />
+        <Route path="/carrito" element={<Cart />} />
       </Route>
     </Routes>
   );

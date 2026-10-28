@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./TarjetaProducto.module.css";
+import { useCart } from "../../context/CartContext";
 
 function TarjetaProducto({ id, imagen, nombre, precio, stock }) {
+  const [cantidad, setCantidad] = useState(1);
+  const { addToCart } = useCart(); 
+
+  const handleAddToCart = () => {
+    const producto = { id, nombre, precio, stock, imagen };
+    addToCart(producto, cantidad);
+    alert(`Agregaste ${cantidad} unidad(es) de ${nombre} al carrito.`);
+  };
+
   return (
     <article className={styles.tarjeta}>
-      {/* Redirige al detalle del producto al hacer clic en la imagen o título */}
       <Link to={`/producto/${id}`} className={styles.enlaceDetalle}>
         <img className={styles.imagen} src={imagen} alt={nombre} />
       </Link>
@@ -25,7 +34,10 @@ function TarjetaProducto({ id, imagen, nombre, precio, stock }) {
           <Link to={`/producto/${id}`} className={styles.botonDetalle}>
             Ver detalle
           </Link>
-          <button className={styles.button}>Agregar al carrito</button>
+          {}
+          <button className={styles.button} onClick={handleAddToCart}>
+            Agregar al carrito
+          </button>
         </div>
       </div>
     </article>
