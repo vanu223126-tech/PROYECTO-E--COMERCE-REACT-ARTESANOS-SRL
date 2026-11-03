@@ -3,7 +3,8 @@ import { useCart } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-  const { cart, clearCart, getCartTotal } = useCart();
+  
+  const { cart, clearCart, getCartTotal, removeItem } = useCart();
 
   if (cart.length === 0) {
     return (
@@ -24,16 +25,30 @@ const Cart = () => {
           <p>Cantidad: {item.quantity}</p>
           <p>Precio unitario: ${item.precio}</p>
           <p>Subtotal: ${item.precio * item.quantity}</p>
+          
+          {/* 2. Botón para eliminar un producto específico usando su id */}
+          <button 
+            onClick={() => removeItem(item.id)} 
+            className="btn-eliminar"
+            style={{ backgroundColor: '#ff4d4d', color: 'white', border: 'none', padding: '5px 10px', cursor: 'pointer' }}
+          >
+            Eliminar producto
+          </button>
+          
+          <hr />
         </div>
       ))}
-      <hr />
+      
       <h3>Total a pagar: ${getCartTotal()}</h3>
+      
       <button onClick={clearCart} className="btn-vaciar">Vaciar Carrito</button>
-      <Link onClick={()=>alert("Gracias por comprar")}className="btn-finalizar">
+      
+      {/* 3. Agregamos la prop to="/" para que el Link funcione correctamente */}
+      <Link to="/" onClick={() => alert("Gracias por comprar")} className="btn-finalizar">
         Finalizar Compra
       </Link>
-</div>
-);
+    </div>
+  );
 };
 
 export default Cart;
