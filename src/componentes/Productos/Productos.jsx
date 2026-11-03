@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 
 function Productos({ Mensaje }) {
   const [productos, setProductos] = useState([]);
+  const { getCantidadActual } = useCart();
 
-  useEffect(() => {
-    fetch('data/json')
-      .then((respuesta) => respuesta.json())
-      .then((data) => setProductos(data))
-      .catch((error) => console.error('Error al cargar productos:', error));
-  }, []);
+  const handleAddToCart = () => {
+addToCart(producto, cantidad);
+//alert(`Agregaste ${cantidad} unidades de ${nombre} al carrito.`);
+};
+const [esFavorito, setEsFavorito] = useState(false);
+const marcarComoFavorito = () => {
+setEsFavorito(!esFavorito);
+};
 
   return (
     <div>

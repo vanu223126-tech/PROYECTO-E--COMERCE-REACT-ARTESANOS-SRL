@@ -28,10 +28,12 @@ const Cart = () => {
       ))}
       <hr />
       <h3>Total a pagar: ${getCartTotal()}</h3>
-      <button onClick={clearCart} style={{ marginRight: '10px' }}>Vaciar Carrito</button>
-      <Link to="/productos">Seguir comprando</Link>
-    </div>
-  );
+      <button onClick={clearCart} className="btn-vaciar">Vaciar Carrito</button>
+      <Link onClick={()=>alert("Gracias por comprar")}className="btn-finalizar">
+        Finalizar Compra
+      </Link>
+</div>
+);
 };
 
 export default Cart;
