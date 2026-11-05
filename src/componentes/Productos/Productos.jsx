@@ -41,17 +41,17 @@ function Productos({ id, nombre, precio, stock, imagen }) {
 
   return (
     <div className={styles.cardProducto || "card-producto"}>
-      {/* Información visual del producto */}
+      {}
       <img src={imagen} alt={nombre} style={{ width: '100px' }} />
       <h3>{nombre}</h3>
       <p>Precio: ${precio}</p>
       
-      {/* Indicador de lo que ya tenés guardado globalmente en el carrito */}
+      {}
       <p style={{ fontSize: '0.9rem', color: '#666' }}>
         Ya tenés {cantidadActual} unidades de este producto en el carrito.
       </p>
 
-      {/* Controles del contador */}
+      {}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '10px 0' }}>
         <button onClick={decrementar}>-</button>
         <p style={{ margin: '0 15px', fontWeight: 'bold' }}>{cantidad}</p>

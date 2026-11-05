@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FormularioProducto } from '../FormularioProducto/FormularioProducto';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 
 export function FormularioContainer() {
   const [datosForm, setDatosForm] = useState({
@@ -53,10 +55,13 @@ export function FormularioContainer() {
           imagen: datosImgbb.data.url 
         };
 
-        console.log('Enviando los siguientes datos COMPLETOS a la API:', productoCompleto);
-        alert('¡Producto creado con éxito!');
+        console.log('Guardando producto en Firestore...');
+        await addDoc(collection(db, "Productos"), productoCompleto);
 
-        
+        console.log('¡Producto guardado en Firebase con éxito!');
+        alert('¡Producto creado y guardado en la base de datos con éxito!');
+
+                
         setDatosForm({ nombre: '', precio: '', stock: '' });
         setImagenFile(null);
       } else {

@@ -1,34 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import EquipoList from './EquipoList';
+import { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/config"; 
+import EquipoList from "./EquipoList";
 
-export default function EquipoContainer() {
-  const [integrantes, setIntegrantes] = useState([]);
+const EquipoContainer = () => {
+  const [equipo, setEquipo] = useState([]);
   const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const obtenerEquipo = async () => {
       try {
-        const respuesta = await fetch("/data/equipo.json");
+        const querySnapshot = await getDocs(collection(db, "Equipo"));
+        const listaEquipo = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-        if (!respuesta.ok) {
-          throw new Error('No se pudo cargar la información del equipo');
-        }
-
-        const datos = await respuesta.json();
-        setIntegrantes(datos);
+        console.log("Datos del equipo que llegaron de Firebase:", listaEquipo);
+        setEquipo(listaEquipo);
       } catch (error) {
-        setError(error.message);
+        console.error("Error al obtener el equipo:", error);
       } finally {
         setCargando(false);
       }
     };
-
+   
     obtenerEquipo();
   }, []);
 
-  if (cargando) return <p style={{ textAlign: 'center', color: '#ccc' }}>Cargando equipo...</p>;
-  if (error) return <p style={{ textAlign: 'center', color: 'red' }}>Error: {error}</p>;
+  if (cargando) return <h2 style={{ textAlign: "center", padding: "40px", color: "#fff" }}>Cargando equipo...</h2>;
 
-  return <EquipoList integrantes={integrantes} />;
-}
+  return <EquipoList equipo={equipo} />;
+};
+
+export default EquipoContainer;

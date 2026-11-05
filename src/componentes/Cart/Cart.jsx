@@ -26,7 +26,7 @@ const Cart = () => {
           <p>Precio unitario: ${item.precio}</p>
           <p>Subtotal: ${item.precio * item.quantity}</p>
           
-          {/* 2. Botón para eliminar un producto específico usando su id */}
+          {}
           <button 
             onClick={() => removeItem(item.id)} 
             className="btn-eliminar"
@@ -43,7 +43,7 @@ const Cart = () => {
       
       <button onClick={clearCart} className="btn-vaciar">Vaciar Carrito</button>
       
-      {/* 3. Agregamos la prop to="/" para que el Link funcione correctamente */}
+      {}
       <Link to="/" onClick={() => alert("Gracias por comprar")} className="btn-finalizar">
         Finalizar Compra
       </Link>

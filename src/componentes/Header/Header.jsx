@@ -24,13 +24,15 @@ export default function Header() {
             <Link to="/productos" className={styles.enlace}>Productos</Link>
           </li>
           <li>
-            <Link to="/destacados" className={styles.enlace}>Destacados</Link>
+            <Link to="/nosotros" className={styles.enlace}>Sobre Nosotros</Link>
           </li>
           <li>
             <Link to="/alta" className={styles.enlace}>Alta de Productos</Link>
           </li>
           <li>
-            <Link to="/carrito">Carrito 🛒 {totalItems > 0 && <span>{totalItems}</span>}</Link>
+                <Link to="/carrito" className={styles.enlace}>
+              Carrito 🛒 {totalItems > 0 && <span>{totalItems}</span>}
+            </Link>
           </li>
         </ul>
       </nav>

@@ -16,7 +16,7 @@ function Inicio() {
         </Link>
       </section>
 
-      {/* Beneficios */}
+      {}
       <section className={styles.beneficios}>
         <div className={styles.beneficio}>
           <h3>Hecho a mano</h3>
@@ -32,7 +32,7 @@ function Inicio() {
         </div>
       </section>
 
-      {/* Productos destacados: cada tarjeta lleva a /producto/:id */}
+      {}
       <section className={styles.destacados}>
         <ProductosContainer Mensaje="Productos destacados" soloDestacados />
       </section>
