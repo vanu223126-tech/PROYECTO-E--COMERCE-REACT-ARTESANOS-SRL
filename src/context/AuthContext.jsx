@@ -1,0 +1,82 @@
+import React, { createContext, useState, useContext, useEffect } from "react";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
+export const AuthContext = createContext();
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth debe ser usado dentro de un AuthProvider");
+  }
+  return context;
+};
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const auth = getAuth();
+  const db = getFirestore();
+
+  const signup = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const logout = () => {
+    return signOut(auth);
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      setLoading(true);
+      if (!currentUser) {
+        setUser(null);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const userDocRef = doc(db, "usuarios", currentUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+        const rol =
+          userDocSnap.exists() && userDocSnap.data().rol === "admin"
+            ? "admin"
+            : "user";
+
+        setUser({ ...currentUser, rol });
+      } catch (error) {
+        console.error("Error al obtener el rol del usuario:", error);
+        setUser({ ...currentUser, rol: "user" });
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth, db]);
+
+  const value = {
+    user,
+    loading,
+    signup,
+    login,
+    logout,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
+};

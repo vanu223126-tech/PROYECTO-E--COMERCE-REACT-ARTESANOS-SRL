@@ -1,72 +1,41 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../../firebase/config'; // Asegúrate de que esta ruta sea la correcta a tu config
+import { useParams } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase/config";
 
-const ProductoDetalle = () => {
+const ProductosDetalle = () => {
   const { id } = useParams();
-  const [producto, setProducto] = useState(null);
-  const [cargando, setCargando] = useState(true);
+  const [prod, setItem] = useState(null);
 
   useEffect(() => {
-    const obtenerProducto = async () => {
-      
-      try {
-        
-        const docRef = doc(db, "Productos", id);
-        const docSnap = await getDoc(docRef);
-        
-        if (docSnap.exists()) {
-          setProducto({ id: docSnap.id, ...docSnap.data() });
-        } else {
-          setProducto(null);
-        }
-      } catch (error) {
-        console.error("Error al obtener el producto:", error);
-      } finally {
-        setCargando(false);
-      }
-    };
+    if (id) {
+      const docRef = doc(db, "Producto", id);
 
-    obtenerProducto();
+      getDoc(docRef)
+        .then((resp) => {
+          if (resp.exists()) {
+            setItem({ ...resp.data(), id: resp.id });
+          } else {
+            console.log("No se encontró el producto");
+          }
+        })
+        .catch((error) => console.log(error));
+    }
   }, [id]);
 
-  if (cargando) return <h2>Cargando detalle del producto...</h2>;
-
-  if (!producto) {
-    return (
-      <div style={{ padding: '20px' }}>
-        <h2>Producto no encontrado.</h2>
-        <Link to="/productos">← Volver al catálogo</Link>
-      </div>
-    );
-  }
-  
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Detalle del Producto: {producto.nombre}</h2>
-      {producto.imagen && (
-        <img 
-          src={producto.imagen} 
-          alt={producto.nombre} 
-          style={{ maxWidth: '400px', width: '100%', borderRadius: '8px' }} 
-        />
+    <div className="CartaDetalle">
+      {prod ? (
+        <>
+          <h2>{prod.nombre}</h2>
+          <p>{prod.descripcion}</p>
+          <p>Precio: ${prod.precio}</p>
+        </>
+      ) : (
+        <p>Cargando producto...</p>
       )}
-      <h3>${producto.precio?.toLocaleString("es-AR")}</h3>
-      
-      {}
-      <p>{producto.descripcion || "Descripción no disponible."}</p>
-      
-      <p>Stock disponible: {producto.stock ?? "Consultar"}</p>
-      
-      {}
-      <p>Categoría: {producto.categoria || "General"}</p>
-      
-      <Link to="/productos" style={{ marginTop: '15px', display: 'inline-block' }}>
-        ← Volver a Productos
-      </Link>
     </div>
   );
 };
 
-export default ProductoDetalle;
+export default ProductosDetalle;

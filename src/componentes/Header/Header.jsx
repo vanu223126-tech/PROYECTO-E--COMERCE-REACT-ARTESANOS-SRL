@@ -1,12 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import { useCart } from '../../context/CartContext';
+import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function Header() {
-
   const { getCartQuantity } = useCart();
   const totalItems = getCartQuantity();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/login");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   return (
     <header className={styles.header}>
@@ -26,11 +37,41 @@ export default function Header() {
           <li>
             <Link to="/nosotros" className={styles.enlace}>Sobre Nosotros</Link>
           </li>
+
+          {user?.rol === "admin" && (
+            <>
+              <li>
+                <Link to="/admin/cupones" className={styles.enlace}>Gestión de Cupones</Link>
+              </li>
+              <li>
+                <Link to="/alta" className={styles.enlace}>Alta de Productos</Link>
+              </li>
+            </>
+          )}
+
+          {!user ? (
+            <>
+              <li>
+                <Link to="/login" className={styles.enlace}>Login</Link>
+              </li>
+              <li>
+                <Link to="/registro" className={styles.enlace}>Registro</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <button
+                  type="button"
+                 onClick={handleLogout}
+                className={`${styles.enlace} ${styles.botonSalir}`}
+                 >
+                 Cerrar sesión
+              </button>
+            </li>
+          )}
+
           <li>
-            <Link to="/alta" className={styles.enlace}>Alta de Productos</Link>
-          </li>
-          <li>
-                <Link to="/carrito" className={styles.enlace}>
+            <Link to="/carrito" className={styles.enlace}>
               Carrito 🛒 {totalItems > 0 && <span>{totalItems}</span>}
             </Link>
           </li>

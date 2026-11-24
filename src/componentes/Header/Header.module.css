@@ -50,3 +50,19 @@
 .enlace:hover {
   color: #ffcc00;
 }
+
+
+.botonSalir {
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #ffffff; 
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botonSalir:hover {
+  opacity: 0.85;
+}

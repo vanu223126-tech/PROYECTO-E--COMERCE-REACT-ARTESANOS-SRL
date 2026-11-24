@@ -2,7 +2,8 @@
   background-color: #1a1a1a;
   border: 1px solid #333;
   border-radius: 8px;
-  padding: 25px;
+  padding: 24px;
+  width: calc(100% - 24px);
   max-width: 450px;
   margin: 30px auto;
   color: #fff;
@@ -25,6 +26,19 @@
   gap: 5px;
 }
 
+.campoCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.campoCheckbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #ffcc00;
+  cursor: pointer;
+}
+
 .label {
   font-size: 0.9rem;
   color: #ccc;
@@ -42,11 +56,24 @@
 .input:focus {
   outline: none;
   border-color: #ffcc00;
+  box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.25);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .fileInput {
   color: #ccc;
   font-size: 0.85rem;
+}
+
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .boton {
@@ -57,10 +84,29 @@
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
-.boton:hover {
+.boton:hover:not(:disabled) {
   background-color: #e6b800;
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.botonSecundario {
+  background-color: transparent;
+  color: #ffcc00;
+  border: 1px solid #ffcc00;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.botonSecundario:hover {
+  background-color: rgba(255, 204, 0, 0.12);
 }
